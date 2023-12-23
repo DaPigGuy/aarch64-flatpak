@@ -1,0 +1,68 @@
+app-id: com.lunarclient.LunarClient
+runtime: org.freedesktop.Platform
+runtime-version: "23.08"
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.node18
+base: org.electronjs.Electron2.BaseApp
+base-version: "23.08"
+command: lunarclient
+rename-icon: lunarclient
+separate-locales: false
+finish-args:
+  - --share=network
+  - --device=dri
+  - --socket=x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --talk-name=org.kde.StatusNotifierWatcher
+  - --persist=.minecraft
+  - --persist=.lunarclient
+  - --persist=.java
+modules:
+  - name: unappimage
+    sources:
+      - type: git
+        url: https://github.com/refi64/unappimage
+        commit: d7f86f2a0d7ec3a69211125207d5f127386b849a
+    buildsystem: simple
+    build-commands:
+      - make -C squashfs-tools install INSTALL_DIR=/app/bin
+
+  - name: xrandr
+    sources:
+      - type: archive
+        url: https://www.x.org/archive/individual/app/xrandr-1.5.2.tar.gz
+        sha256: efd062cd228dc18a7de26422c81bc4be6a7e62f7f0ad6f9bebdd9ff8385c5668
+
+  - name: lunarclient
+    sources:
+      - type: file
+        url: https://launcherupdates.lunarclientcdn.com/Lunar%20Client-3.1.3.AppImage
+        sha256: f04f1364aa02f89c667f54e206326cc1f9bca8242ad2600a5cfbf748d91498b5
+        dest-filename: LunarClient.AppImage
+      - type: file
+        path: com.lunarclient.LunarClient.desktop
+      - type: file
+        path: com.lunarclient.LunarClient.png
+      - type: file
+        path: patch.sh
+      - type: file
+        path: install.sh
+      - type: script
+        dest-filename: lunarclient
+        commands:
+          - exec zypak-wrapper /app/lunarclient/launcher --no-sandbox "$0"
+    buildsystem: simple
+    build-options:
+      append-path: /usr/lib/sdk/node18/bin
+      build-args:
+        - --share=network
+      env:
+        npm_config_nodedir: /usr/lib/sdk/node18
+        npm_config_yes: true
+    build-commands:
+      - chmod +x ./patch.sh
+      - ./patch.sh
+      - chmod +x ./install.sh
+      - ./install.sh
