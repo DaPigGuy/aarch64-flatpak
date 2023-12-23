@@ -27,7 +27,7 @@ NATIVES_URL="https://raw.githubusercontent.com/DaPigGuy/aarch64-flatpak/master/c
 NATIVES_SHA1_CHECKSUM="2aa2d91b5079168300fbf28cd068c98e76539a1a"
 NATIVES_SIZE="292770"
 NATIVES_MODIFIED_TIME="1703321377"
-sed -i -E 's#class ArtifactsStage extends LaunchStage\{constructor\(([A-Z]),([A-Z]),([A-Z,]+)\)\{#class ArtifactsStage extends LaunchStage{constructor(\1,\2,\3){const nativesFile=\2.filter(file=>file.type==="NATIVES")[0];nativesFile.name="client-natives-linux-aarch64.zip";nativesFile.sha1="'$NATIVES_SHA1_CHECKSUM'";nativesFile.size='$NATIVES_SIZE';nativesFile.mtime='$NATIVES_MODIFIED_TIME';#' dist-electron/electron/main.js
+sed -i -E 's#class ArtifactsStage extends LaunchStage\{constructor\(([A-Z]),([A-Z]),([A-Z,]+)\)\{#class ArtifactsStage extends LaunchStage{constructor(\1,\2,\3){const nativesFile=\2.filter(file=>file.type==="NATIVES")[0];nativesFile.name="client-natives-linux-aarch64.zip";nativesFile.url="'$NATIVES_URL'";nativesFile.sha1="'$NATIVES_SHA1_CHECKSUM'";nativesFile.size='$NATIVES_SIZE';nativesFile.mtime='$NATIVES_MODIFIED_TIME';#' dist-electron/electron/main.js
 
 # Identify as an x64 system to Lunar Client servers
 sed -i -E 's/process\.arch/"x64"/' dist-electron/electron/main.js
