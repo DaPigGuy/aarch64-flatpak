@@ -30,7 +30,7 @@ NATIVES_MODIFIED_TIME="1703321377"
 sed -i -E 's#class ArtifactsStage extends LaunchStage\{constructor\(([A-Z]),([A-Z]),([A-Z,]+)\)\{#class ArtifactsStage extends LaunchStage{constructor(\1,\2,\3){const nativesFile=\2.filter(file=>file.type==="NATIVES")[0];nativesFile.name="client-natives-linux-aarch64.zip";nativesFile.sha1="'$NATIVES_SHA1_CHECKSUM'";nativesFile.size='$NATIVES_SIZE';nativesFile.mtime='$NATIVES_MODIFIED_TIME';#' dist-electron/electron/main.js
 
 # Identify as an x64 system to Lunar Client servers
-sed -i -E 's/cpuArchitecture:process\.arch/cpuArchitecture:"x64"/' dist-electron/electron/main.js
+sed -i -E 's/process\.arch/"x64"/' dist-electron/electron/main.js
 
 # Install packages
 npm install
