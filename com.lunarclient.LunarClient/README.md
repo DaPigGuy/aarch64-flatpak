@@ -6,6 +6,7 @@ Installation of this patched app implies Flatpak. Otherwise, you're on your own.
 ```sh
 git clone https://github.com/DaPigGuy/aarch64-flatpak
 cd aarch64-flatpak/com.lunarclient.LunarClient
+flatpak install org.freedesktop.Sdk//23.08 org.freedesktop.Platform//23.08 org.electronjs.Electron2.BaseApp//23.08 org.freedesktop.Sdk.Extension.node18//23.08
 flatpak-builder build-dir com.lunarclient.LunarClient.yml --force-clean --user --install
 ```
 
