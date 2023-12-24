@@ -29,9 +29,11 @@ See `patch.sh` for additional details.
 The patched app is then packed with the latest version of Electron, rather than the older version used by Lunar Client, to include the latest fixes for ((16k page size) aarch64) Linux, (X)Wayland, etc.
 
 # Building Natives
-This section is on building your own natives. This is not required and the patched app will download natives from this repo by default.
+**This section is on building your own natives. This is not required and the patched app will download natives from this repo by default.**
 
-You will need `libwebp-imageio.so` for Lunar Client. Unfortunately, the upstream is unmaintained and does not support aarch64. However, there is a [pull request](https://github.com/sejda-pdf/webp-imageio/pull/6) to resolve this.
+You will need to do the following for several versions of LWJGL in order to support all versions of the game.
+
+All versions will share the same `libwebp-imageio64.so`. Unfortunately, the upstream is unmaintained and does not support aarch64. However, there is a [pull request](https://github.com/sejda-pdf/webp-imageio/pull/6) to resolve this. Building is as simple as;
 ```sh
 git clone https://github.com/gotson/webp-imageio.git
 git checkout dev
@@ -40,13 +42,20 @@ git checkout dev
 ./dockcross/dockcross-linux-arm64 bash -c './compile.sh Linux aarch64'
 
 # Result at ./build/Linux/aarch64/src/main/c/libwebp-imageio.so
+# Rename to libwebp-imageio64.so
 ```
 
 
-If you plan to play on Minecraft versions prior to 1.13, you will also need to build LWJGL2.
-```sh
-# TODO
-```
+You will then need the following LWJGL native libraries for each LWJGL version listed in the `natives.json` file: `libopenal`, `liblwjgl_tinyfd`, `liblwjgl_stb`, `liblwjgl_opengl`, `liblwjgl`, `libjemalloc`, `libglfw`. For 16k page sizes (Asahi Linux / Raspberry Pi 5), you will need a more up to date version of `libjemalloc` (from LWJGL 3.3.3). You can find them prebuilt on the [official LWJGL site](https://www.lwjgl.org/browse/release).
 
 
-Create a `.zip` archive containing your natives and upload them somewhere. Change `NATIVES_URL` to your URL and update `NATIVES_SHA1_CHECKSUM`/`NATIVES_SIZE`/`NATIVES_MODIFIED_TIME` (values can be obtained with `sha1sum your.zip` and `ls -l --time-style=+%s your.zip`) in `patch.sh`. You can now reinstall the Flatpak.
+Compress your native libraries into a `.zip` archive for each LWJGL version and upload them. Update the corresponding information in `natives.json`. For the sha1 checksum, `sha1sum your.zip`. For the file size & file modified timestamp, `ls -l --time-style=+%s your.zip`. You can then reinstall the Flatpak, which will now use your natives.
+
+
+LWJGL Versions
+| Minecraft        | LWJGL             |
+|------------------|-------------------|
+| 1.7 / 1.8 / 1.12 | Not Yet Supported |
+| 1.16-1.17        | 3.2.3             |
+| 1.18-1.19        | 3.3.1             |
+| 1.20             | 3.3.2             |

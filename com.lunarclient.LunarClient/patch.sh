@@ -23,11 +23,7 @@ JRE_CHECKSUM="3c9d7c21dff3bc99097bf26ef94d163377119e74"
 sed -i -E 's#class JREStage extends LaunchStage\{constructor\(([A-Z]),([A-Z,]+)\)\{#class JREStage extends LaunchStage{constructor(\1,\2){\1.download.url="'$JRE_URL'";\1.executablePathInArchive=["'$JRE_NAME'", "bin", "java"];\1.folderChecksum="'$JRE_CHECKSUM'";#' dist-electron/electron/main.js
 
 # Replace the natives
-NATIVES_URL="https://raw.githubusercontent.com/DaPigGuy/aarch64-flatpak/master/com.lunarclient.LunarClient/client-natives-linux-aarch64.zip"
-NATIVES_SHA1_CHECKSUM="2aa2d91b5079168300fbf28cd068c98e76539a1a"
-NATIVES_SIZE="292770"
-NATIVES_MODIFIED_TIME="1703321377"
-sed -i -E 's#class ArtifactsStage extends LaunchStage\{constructor\(([A-Z]),([A-Z]),([A-Z,]+)\)\{#class ArtifactsStage extends LaunchStage{constructor(\1,\2,\3){const nativesFile=\2.filter(file=>file.type==="NATIVES")[0];nativesFile.name="client-natives-linux-aarch64.zip";nativesFile.url="'$NATIVES_URL'";nativesFile.sha1="'$NATIVES_SHA1_CHECKSUM'";nativesFile.size='$NATIVES_SIZE';nativesFile.mtime='$NATIVES_MODIFIED_TIME';#' dist-electron/electron/main.js
+sed -i -E 's#class ArtifactsStage extends LaunchStage\{constructor\(([A-Z]),([A-Z]),([A-Z,]+)\)\{#class ArtifactsStage extends LaunchStage{constructor(\1,\2,\3){const nativesFile=\2.filter(file=>file.type==="NATIVES")[0];const natives='$(cat ../../../natives.json | jq -c)';const nativeName=natives.versions[Object.keys(natives.versions).filter(version=>nativesFile.name.includes("client-natives-linux-x86-"+version))[0]||"v1_19"];const native=natives.natives[nativeName];nativesFile.name=nativeName;nativesFile.url=native.url;nativesFile.sha1=native.sha1;nativesFile.size=native.size;nativesFile.mtime=native.mtime;#' dist-electron/electron/main.js
 
 # Identify as an x64 system to Lunar Client servers
 sed -i -E 's/process\.arch/"x64"/' dist-electron/electron/main.js
