@@ -1,0 +1,48 @@
+name: Flatpak Repo
+on:
+  push:
+    branches:
+      - master
+jobs:
+  flatter:
+    name: Flatter
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/andyholmes/flatter/freedesktop:23.08
+      options: --privileged
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Setup QEMU
+      id: qemu
+      uses: docker/setup-qemu-action@v2
+      with:
+        platforms: arm64
+    - name: Setup GPG
+      id: gpg
+      uses: crazy-max/ghaction-import-gpg@v5
+      with:
+        gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+        passphrase: ${{ secrets.GPG_PASSPHRASE }}
+    - name: Install Flatpak dependencies
+      run: |
+        flatpak install --noninteractive org.electronjs.Electron2.BaseApp/aarch64/23.08
+        flatpak install --noninteractive org.freedesktop.Sdk.Extension.node18/aarch64/23.08
+    - name: Build
+      id: build
+      uses: andyholmes/flatter@main
+      with:
+        files: |
+          com.lunarclient.LunarClient/com.lunarclient.LunarClient.yml
+        arch: aarch64
+        gpg-sign: ${{ steps.gpg.outputs.fingerprint }}
+        upload-bundles: true
+        cache-key: flatter-${{ github.sha }}
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v4
+      with:
+        folder: ${{ steps.build.outputs.repository }}
+        target-folder: repo
+        single-commit: true
