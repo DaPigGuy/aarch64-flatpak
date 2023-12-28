@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+	<id>com.lunarclient.LunarClient</id>
+
+	<name>Lunar Client</name>
+	<developer_name>Moonsworth, LLC</developer_name>
+	<summary>A modpack for all modern versions of Minecraft!</summary>
+	<url type="homepage">https://www.lunarclient.com/</url>
+
+	<metadata_license>CC0-1.0</metadata_license>
+	<project_license>LicenseRef-proprietary</project_license>
+
+	<categories>
+		<category>Game</category>
+	</categories>
+
+	<description>
+		<p>
+			Lunar Client is a modpack for the most popular versions of Minecraft, including; 1.7, 1.8, 1.12, 1.16, 1.17, 1.18, 1.19, and 1.20. Lunar Client is always kept up to date with the latest Minecraft versions, meaning that you will always have the latest features and bug fixes.
+		</p>
+		<p>
+			This Flatpak is unofficial and in no way affiliated with Lunar Client or Moonsworth, LLC. The app has been patched to run on arm64 Linux and may break unexpectedly, use at your own risk!
+		</p>
+	</description>
+
+	<launchable type="desktop-id">com.lunarclient.LunarClient.desktop</launchable>
+
+	<requires>
+		<control>pointing</control>
+		<control>keyboard</control>
+	</requires>
+
+	<content_rating type="oars-1.1">
+		<content_attribute id="violence-fantasy">moderate</content_attribute>
+		<content_attribute id="social-chat">intense</content_attribute>
+	</content_rating>
+
+	<releases>
+		<release version="3.1.3" date="2023-11-22"/>
+	</releases>
+</component>

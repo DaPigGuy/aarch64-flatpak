@@ -42,6 +42,8 @@ modules:
         sha256: f04f1364aa02f89c667f54e206326cc1f9bca8242ad2600a5cfbf748d91498b5
         dest-filename: LunarClient.AppImage
       - type: file
+        path: com.lunarclient.LunarClient.metainfo.xml
+      - type: file
         path: com.lunarclient.LunarClient.desktop
       - type: file
         path: com.lunarclient.LunarClient.png
