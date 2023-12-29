@@ -3,6 +3,13 @@
 ## Installing
 Installation of this patched app implies Flatpak. Otherwise, you're on your own.
 
+### From Flatpak Remote
+```sh
+flatpak remote-add --if-not-exists aarch64-flatpak https://dapigguy.github.io/aarch64-flatpak/aarch64-flatpak.flatpakrepo
+flatpak install com.lunarclient.LunarClient
+```
+
+### From Source
 ```sh
 git clone https://github.com/DaPigGuy/aarch64-flatpak
 cd aarch64-flatpak/com.lunarclient.LunarClient
