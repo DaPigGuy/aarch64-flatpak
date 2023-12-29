@@ -1,5 +1,11 @@
 {
     "natives": {
+        "client-natives-linux-aarch64-2.9.4.zip": {
+            "url": "https://raw.githubusercontent.com/DaPigGuy/aarch64-flatpak/master/com.lunarclient.LunarClient/natives/client-natives-linux-aarch64-2.9.4.zip",
+            "sha1": "a12e82a26d638a3b25dd0879f5c257c236abef02",
+            "size": 1494683,
+            "mtime": 1703837068
+        },
         "client-natives-linux-aarch64-3.2.3.zip": {
             "url": "https://raw.githubusercontent.com/DaPigGuy/aarch64-flatpak/master/com.lunarclient.LunarClient/natives/client-natives-linux-aarch64-3.2.3.zip",
             "sha1": "c1c91577effdf3934368720f96e1cd6ce37bbaa1",
@@ -20,6 +26,9 @@
         }
     },
     "versions": {
+        "v1_7": "client-natives-linux-aarch64-2.9.4.zip",
+        "v1_8": "client-natives-linux-aarch64-2.9.4.zip",
+        "v1_12": "client-natives-linux-aarch64-2.9.4.zip",
         "v1_16": "client-natives-linux-aarch64-3.2.3.zip",
         "v1_17": "client-natives-linux-aarch64-3.2.3.zip",
         "v1_18": "client-natives-linux-aarch64-3.3.1.zip",
