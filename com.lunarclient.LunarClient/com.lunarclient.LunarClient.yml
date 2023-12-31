@@ -11,6 +11,7 @@ rename-icon: lunarclient
 separate-locales: false
 finish-args:
   - --share=network
+  - --share=ipc
   - --device=dri
   - --socket=x11
   - --socket=wayland
