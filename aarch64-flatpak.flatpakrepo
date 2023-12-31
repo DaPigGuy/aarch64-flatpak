@@ -1,0 +1,7 @@
+[Flatpak Repo]
+Title=aarch64-flatpak
+Description=Various Flatpaks for apps patched to (**unofficially**) support arm64 Linux
+Url=https://dapigguy.github.io/aarch64-flatpak/repo
+Homepage=https://github.com/DaPigGuy/aarch64-flatpak
+Icon=https://raw.githubusercontent.com/flatpak/flatpak/main/flatpak.png
+GPGKey=mDMEZY30ORYJKwYBBAHaRw8BAQdAir+QRtAAqgHIh+2ZZ5j2ZGQJj3+n2FkYWvQ0L0u9TtW0EmRhcGlnZ3V5QGdpdGh1Yi5pb4iZBBMWCgBBFiEEATIAJDuNma8xsF7XHYfQAz4lEZEFAmWN9DkCGwMFCQWjmoAFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AACgkQHYfQAz4lEZFvsQD/QC/hph8t/q4zl1ZOQUkBFw9Y8FvbH+U+tWoo9EAerUsBAKNhfuYB5SS88U00uAwI/V3aJhSgkbMOiTejX1oNyNYCuDgEZY30ORIKKwYBBAGXVQEFAQEHQP3FgRO63jPYqtlz8S7TjvbvTOmf4cC1DNts2e5+/et/AwEIB4h4BBgWCgAgFiEEATIAJDuNma8xsF7XHYfQAz4lEZEFAmWN9DkCGwwACgkQHYfQAz4lEZF+CAEAsYjyukKfF5hHlZCenH6q1UL+ZyCF+w8Qw2r41HYDLHwA/3dYRKzdtjby9ALQaGlUU9R70eUJbi7hXTnZ6HmFJa4I
