@@ -6,5 +6,5 @@ This repo contains various Flatpaks for apps patched to (**unofficially**) suppo
 A Flatpak remote is provided, managed by [GitHub Actions](https://github.com/DaPigGuy/aarch64-flatpak/blob/master/.github/workflows/flatpak_repo.yml) and hosted on [GitHub Pages](https://github.com/DaPigGuy/aarch64-flatpak/tree/gh-pages), in order to easily keep up with updates.
 
 ```sh
-flatpak remote-add --if-not-exists aarch64-flatpak https://dapigguy.github.io/aarch64-flatpak/aarch64-flatpak.flatpakrepo
+flatpak remote-add --if-not-exists aarch64-flatpak https://dapigguy.github.io/aarch64-flatpak/index.flatpakrepo
 ```
