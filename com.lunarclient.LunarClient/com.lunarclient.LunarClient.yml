@@ -39,8 +39,8 @@ modules:
   - name: lunarclient
     sources:
       - type: file
-        url: https://launcherupdates.lunarclientcdn.com/Lunar%20Client-3.2.1.AppImage
-        sha256: 9b3039696cccf07217dbd08ab79872cded320b5fcf77c1ecf6d114c17c6d8813
+        url: https://launcherupdates.lunarclientcdn.com/Lunar%20Client-3.2.3.AppImage
+        sha256: 4074b895f9dba07d5ebdcf556489b62498c88731728ab555cf4ad5345d15bf12
         dest-filename: LunarClient.AppImage
       - type: file
         path: com.lunarclient.LunarClient.metainfo.xml
