@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Setup QEMU
       id: qemu
-      uses: docker/setup-qemu-action@v2
+      uses: docker/setup-qemu-action@v3
       with:
         platforms: arm64
     - name: Setup GPG
@@ -54,4 +54,4 @@ jobs:
     steps:
       - name: GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
