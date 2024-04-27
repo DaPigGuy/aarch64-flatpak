@@ -9,7 +9,7 @@ cd extracted_asar
 
 # Get rid of the bsdiff-node dependency. It's a complete pain in the ass.
 sed -i '/bsdiff-node/d' package.json
-sed -i -E 's/,bsdiff=require\("bsdiff-node"\)//' dist-electron/electron/main.js
+sed -i -E 's/,bsdiff=require\("\@lunarclient\/bsdiff-node"\)//' dist-electron/electron/main.js
 sed -i -E 's/await bsdiff\.patch\([a-zA-Z\.,]+\)/throw new Error("bsdiff-node dependency removed")/' dist-electron/electron/main.js
 
 # Disable launcher auto-updates
