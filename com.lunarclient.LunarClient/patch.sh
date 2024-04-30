@@ -17,10 +17,7 @@ sed -i -E 's/checkForUpdates\(([A-Z])\)\{/checkForUpdates(\1){return;/' dist-ele
 sed -i -E 's/setupListeners\(\)\{/setupListeners(){return;/' dist-electron/electron/main.js
 
 # Replace the JRE
-JRE_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9%2B9/OpenJDK17U-jre_aarch64_linux_hotspot_17.0.9_9.tar.gz"
-JRE_NAME="jdk-17.0.9+9-jre"
-JRE_CHECKSUM="3c9d7c21dff3bc99097bf26ef94d163377119e74"
-sed -i -E 's#class JREStage extends LaunchStage\{constructor\(([A-Z]),([A-Z,]+)\)\{#class JREStage extends LaunchStage{constructor(\1,\2){\1.download.url="'$JRE_URL'";\1.executablePathInArchive=["'$JRE_NAME'", "bin", "java"];\1.folderChecksum="'$JRE_CHECKSUM'";#' dist-electron/electron/main.js
+sed -i -E 's#class JREStage extends LaunchStage\{constructor\(([A-Z]),([A-Z,]+)\)\{#class JREStage extends LaunchStage{constructor(\1,\2){const {jdks}='$(cat ../../../jdks.json | jq -c)';const jdk=jdks[Object.keys(jdks).filter(j=>\1.download.url.includes("jre"+j))[0]];\1.download.url=jdk.url;\1.executablePathInArchive=[jdk.name,"bin","java"];\1.folderChecksum=jdk.checksum;#' dist-electron/electron/main.js
 
 # Replace the natives
 sed -i -E 's#class ArtifactsStage extends LaunchStage\{constructor\(([A-Z]),([A-Z]),([A-Z,]+),\$\)\{#class ArtifactsStage extends LaunchStage{constructor(\1,\2,\3,\$){const nativesFile=\2.filter(file=>file.type==="NATIVES")[0];const natives='$(cat ../../../natives.json | jq -c)';const nativeName=natives.versions[Object.keys(natives.versions).filter(version=>nativesFile.name.includes("client-natives-linux-x86-"+version))[0]||"v1_20"];const native=natives.natives[nativeName];nativesFile.name=nativeName;nativesFile.url=native.url;nativesFile.sha1=native.sha1;nativesFile.size=native.size;nativesFile.mtime=native.mtime;#' dist-electron/electron/main.js

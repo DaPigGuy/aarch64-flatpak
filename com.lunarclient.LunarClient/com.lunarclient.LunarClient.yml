@@ -49,6 +49,8 @@ modules:
       - type: file
         path: com.lunarclient.LunarClient.png
       - type: file
+        path: jdks.json
+      - type: file
         path: natives.json
       - type: file
         path: patch.sh
