@@ -20,9 +20,9 @@
         },
         "client-natives-linux-aarch64-3.3.2.zip": {
             "url": "https://raw.githubusercontent.com/DaPigGuy/aarch64-flatpak/master/com.lunarclient.LunarClient/natives/client-natives-linux-aarch64-3.3.2.zip",
-            "sha1": "200d8698b70fe077a6f6e5f834a3b8e80805dd03",
-            "size": 1597512,
-            "mtime": 1703785874
+            "sha1": "eaeed5725ca438be8f4b989bdd3bbc6456256890",
+            "size": 2757592,
+            "mtime": 1715938682
         }
     },
     "versions": {
