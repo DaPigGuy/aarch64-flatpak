@@ -53,7 +53,7 @@ git checkout dev
 ```
 
 
-You will then need the following LWJGL native libraries for each LWJGL version listed in the `natives.json` file: `libopenal`, `liblwjgl_tinyfd`, `liblwjgl_stb`, `liblwjgl_opengl`, `liblwjgl`, `libjemalloc`, `libglfw`. Additionally, `libfreetype` is required for versions 3.3.2 and greater. For 16k page sizes (Asahi Linux / Raspberry Pi 5), you will need a more up to date version of `libjemalloc` (from LWJGL 3.3.3+). You can find them prebuilt on the [official LWJGL site](https://www.lwjgl.org/browse/release).
+You will then need the following LWJGL native libraries for each LWJGL version listed in the `natives.json` file: `libopenal`, `liblwjgl_tinyfd`, `liblwjgl_stb`, `liblwjgl_opengl`, `liblwjgl`, `libjemalloc`, `libglfw`. Additionally, `libfreetype` is required for versions 3.3.3 and greater. For 16k page sizes (Asahi Linux / Raspberry Pi 5), you will need a more up to date version of `libjemalloc` (from LWJGL 3.3.3+). You can find them prebuilt on the [official LWJGL site](https://www.lwjgl.org/browse/release).
 
 
 Pre-built binaries for LWJGL 2 are not available for Linux aarch64. In order to support legacy versions of Minecraft, you will need to build `liblwjgl.so` and `libjinput-linux.so` yourself with the following simple steps:
@@ -105,5 +105,4 @@ LWJGL Versions
 |------------------|-------------------|
 | 1.7 / 1.8 / 1.12 | 2.9.4-20150209    |
 | 1.16-1.17        | 3.2.3             |
-| 1.18-1.20.1      | 3.3.1             |
-| 1.20.2-1.20.4    | 3.3.2             |
+| 1.18-1.21        | 3.3.3             |
