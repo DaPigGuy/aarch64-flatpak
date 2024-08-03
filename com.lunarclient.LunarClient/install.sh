@@ -1,4 +1,4 @@
-mv squashfs-root/resources/extracted_asar/launcher-linux-arm64/ /app/lunarclient/
+mv squashfs-root/resources/extracted_asar/lunarclient-linux-arm64/ /app/lunarclient/
 
 # Install app contents
 install lunarclient "/${FLATPAK_DEST}/bin"
