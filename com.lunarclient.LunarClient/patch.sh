@@ -29,4 +29,4 @@ sed -i -E 's/process\.arch/"x64"/' dist-electron/electron/main.js
 npm install
 
 # Repackage the contents of the app.asar
-npx @electron/packager . --electron-version=29.1.6
+npx @electron/packager . --electron-version=33.0.2
