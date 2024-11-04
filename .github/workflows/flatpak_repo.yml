@@ -8,7 +8,7 @@ jobs:
     name: Flatter
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/andyholmes/flatter/freedesktop:23.08
+      image: ghcr.io/andyholmes/flatter/freedesktop:24.08
       options: --privileged
     permissions:
       contents: write
@@ -28,8 +28,8 @@ jobs:
         passphrase: ${{ secrets.GPG_PASSPHRASE }}
     - name: Install Flatpak dependencies
       run: |
-        flatpak install --noninteractive org.electronjs.Electron2.BaseApp/aarch64/23.08
-        flatpak install --noninteractive org.freedesktop.Sdk.Extension.node18/aarch64/23.08
+        flatpak install --noninteractive org.electronjs.Electron2.BaseApp/aarch64/24.08
+        flatpak install --noninteractive org.freedesktop.Sdk.Extension.node22/aarch64/24.08
     - name: Build
       id: build
       uses: andyholmes/flatter@main
